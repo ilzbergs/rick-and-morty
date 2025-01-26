@@ -26,32 +26,29 @@ This project fetches data from the [Rick and Morty API](https://rickandmortyapi.
 
 ### Installation
 
-1. Clone the repository:
-
-   ```bash
+    ```bash
    git clone https://github.com/ilzbergs/rick-and-morty.git
+```
+### Project setup
 
-
-2. Project Setup
-
-```bash
+    ```bash
 npm install
 ```
 
 Compile and Hot-Reload for Development
 
-```bash
+    ```bash
 npm run dev
 ```
 
 Type-Check, Compile and Minify for Production
 
-```bash
+    ```bash
 npm run build
 ```
 
  Lint with [ESLint](https://eslint.org/)
 
-```bash
+    ```bash
 npm run lint
 ```
