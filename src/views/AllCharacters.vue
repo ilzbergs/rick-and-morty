@@ -15,6 +15,7 @@ import AllCharacters from '../components/AllCharacters.vue'
 import { ref } from 'vue'
 import { useCharacterStore } from '../stores/characterStore'
 
+// Get the character store
 const characterStore = useCharacterStore()
 const characters = ref(characterStore.characters)
 </script>

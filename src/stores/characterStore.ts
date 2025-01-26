@@ -47,22 +47,29 @@ export const useCharacterStore = defineStore('characterStore', () => {
    * The `loading` state is set to `true` while the request is in progress and set to `false` when the request is finished.
    * If there is an error, the `error` state is set to the error message.
    */
-  async function fetchAllCharacters() {
+  const fetchAllCharacters = async () => {
     // If loading is already true, no more data is available, or there is an error, do nothing
     if (loading.value || !hasMore.value || error.value) return
+
     loading.value = true
     error.value = ''
+
     try {
       // Fetch characters from the API with the current page number
       const response = await fetch(`https://rickandmortyapi.com/api/character?page=${page.value}`)
       if (!response.ok) throw new Error('Failed to fetch characters')
+
       const data = await response.json()
+
       if (!data.results || !Array.isArray(data.results)) {
         throw new Error('Invalid data format')
       }
+
       characters.value.push(...data.results)
+
       // Increment the page number for the next fetch
       page.value++
+
       // Check if there are more pages of data to fetch
       hasMore.value = Boolean(data.info.next)
     } catch (err) {
@@ -90,6 +97,7 @@ export const useCharacterStore = defineStore('characterStore', () => {
       // Fetch a specific character by ID from the API
       const response = await fetch(`https://rickandmortyapi.com/api/character/${id}`)
       if (!response.ok) throw new Error('Failed to fetch character')
+
       character.value = await response.json()
     } catch (err) {
       if (err instanceof Error) {

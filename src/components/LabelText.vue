@@ -1,15 +1,27 @@
 <template>
-  <p class="font-light text-sm leading-[18px]" :style="{ color: '#757575' }">
+  <p class="font-light text-sm leading-[18px]" :style="{ color: customColors.grey }">
+    <!-- Display the label -->
     <span>{{ label }}:</span>&nbsp;
-    <span :style="{ color: computedColorClass }">
+    <!--  Display the formatted value -->
+    <span :style="{ color: customColors[color] }">
       {{ formattedValue }}
     </span>
   </p>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, PropType } from 'vue'
 
+// Define the color type
+type Color = 'grey' | 'darkGrey'
+
+// Custom colors, can be extended as needed
+const customColors: Record<Color, string> = {
+  grey: '#757575',
+  darkGrey: '#282828',
+}
+
+// Props
 const props = defineProps({
   label: {
     type: String,
@@ -20,8 +32,8 @@ const props = defineProps({
     required: true,
   },
   color: {
-    type: String,
-    default: '#757575',
+    type: String as PropType<Color>,
+    default: 'grey',
   },
 })
 
@@ -53,16 +65,7 @@ const formattedValue = computed(() => {
  * @param value - The value to be checked, which can be a string or number.
  * @returns True if the value is a string that can be parsed into a valid date, otherwise false.
  */
-
 function isDateString(value: string | number): boolean {
   return typeof value === 'string' && !isNaN(Date.parse(value))
 }
-
-/**
- * Computes a CSS color class for the label text based on the input color.
- * If the color is 'very-dark-grey', it returns '#282828'. Otherwise, it returns '#757575'.
- */
-const computedColorClass = computed(() => {
-  return props.color === 'very-dark-grey' ? '#282828' : '#757575'
-})
 </script>

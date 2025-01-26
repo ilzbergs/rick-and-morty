@@ -1,5 +1,6 @@
 <template>
   <div class="flex flex-wrap gap-y-8 gap-x-6 max-w-[1200px] w-full justify-center">
+    <!-- Character Cards -->
     <div class="flex flex-col gap-2" v-for="character in modelValue" :key="character.id">
       <router-link :to="{ name: 'character', params: { id: character.id } }">
         <img
@@ -7,7 +8,10 @@
           :src="character.image"
           alt="character.name"
         />
-        <p class="font-semibold text-xl leading-[26px] text-very-dark-grey truncate max-w-[220px]">
+        <p
+          class="font-semibold text-xl leading-[26px] truncate max-w-[220px]"
+          style="color: #282828"
+        >
           {{ character.name }}
         </p>
         <div class="flex flex-col gap-1">
@@ -25,7 +29,8 @@
     <div v-if="characterStore.error" class="flex flex-col items-center py-16">
       <p>{{ characterStore.error }}</p>
       <button
-        class="text-very-dark-grey font-semibold underline text-xl leading-[26px] cursor-pointer"
+        class="font-semibold underline text-xl leading-[26px] cursor-pointer"
+        style="color: #282828"
         @click="characterStore.fetchMore"
       >
         Try again
@@ -42,8 +47,10 @@ import { PropType } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useInfiniteScroll } from '@vueuse/core'
 
+// The element to apply the infinite scroll to
 const el = window
 
+// Props
 const props = defineProps({
   modelValue: {
     type: Array as PropType<Characters[]>,
