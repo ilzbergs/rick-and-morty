@@ -32,7 +32,7 @@ This project fetches data from the [Rick and Morty API](https://rickandmortyapi.
    git clone https://github.com/ilzbergs/rick-and-morty.git
 
 
-## Project Setup
+2. Project Setup
 
 ```sh
 npm install
