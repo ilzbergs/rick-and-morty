@@ -34,24 +34,24 @@ This project fetches data from the [Rick and Morty API](https://rickandmortyapi.
 
 2. Project Setup
 
-```sh
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+Compile and Hot-Reload for Development
 
-```sh
+```bash
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+Type-Check, Compile and Minify for Production
 
-```sh
+```bash
 npm run build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+ Lint with [ESLint](https://eslint.org/)
 
-```sh
+```bash
 npm run lint
 ```
